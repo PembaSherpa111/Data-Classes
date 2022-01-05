@@ -1,4 +1,5 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass
+import datetime
 
 @dataclass
 class Orders:
@@ -8,16 +9,16 @@ class Orders:
     PickedByPersonID : int
     ContactPersonID : int
     BackorderOrderID : int
-    OrderDate : 
-    ExpectedDeliveryDate : date
+    OrderDate : datetime.date
+    ExpectedDeliveryDate : datetime.date
     CustomerPurchaseOrderNumber : str
     IsUndersupplyBackordered : bool
     Comments : str
     DeliveryInstructions : str
     InternalComments : str
-    PickingCompletedWhen : date
+    PickingCompletedWhen : datetime.date
     LastEditedBy : int
-    LastEditedWhen : date
+    LastEditedWhen : datetime.date
 
     def __gt__(self,other):
         if self.OrderDate > other.OrderDate:
@@ -42,7 +43,7 @@ class Invoices:
     AccountsPersonID : int
     SalespersonPersonID : int
     PackedByPersonID : int
-    InvoiceDate : date
+    InvoiceDate : datetime.date
     CustomerPurchaseOrderNumber : str
     IsCreditNote : bool
     CreditNoteReason : str
@@ -54,10 +55,10 @@ class Invoices:
     DeliveryRun : str
     RunPosition : str
     ReturnedDeliveryData : str
-    ConfirmedDeliveryTime : date
+    ConfirmedDeliveryTime : datetime.date
     ConfirmedReceivedBy : str
     LastEditedBy : int
-    LastEditedWhen : date
+    LastEditedWhen : datetime.date
 
     def __gt__(self,other):
         if self.InvoiceDate > other.InvoiceDate:
@@ -84,7 +85,7 @@ class Customers:
     DeliveryCityID : int
     PostalCityID : int
     CreditLimit : float
-    AccountOpenedDate : date
+    AccountOpenedDate : datetime.date
     StandardDiscountPercentage : float
     IsStatementSent : bool
     IsOnCreditHold : bool
@@ -102,5 +103,5 @@ class Customers:
     PostalAddressLine2 : str
     PostalPostalCode : str
     LastEditedBy : int
-    ValidFrom : date
-    ValidTo : date
+    ValidFrom : datetime.date
+    ValidTo : datetime.date
